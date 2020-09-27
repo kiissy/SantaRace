@@ -1,6 +1,9 @@
 
 from bangtal import *
 
+setGameOption(GameOption.INVENTORY_BUTTON, False)
+setGameOption(GameOption.MESSAGE_BOX_BUTTON, False)
+
 scene = Scene('산타레이스', 'images/background.png')
 
 santa = Object('images/santa.png')
@@ -31,6 +34,7 @@ def playButton_onMouse(x, y, action):
     if santa.x > 1280:
         showMessage('선물 배달 성공!')
 
+        startButton.setImage('images/restart.png')
         startButton.show()
         endButton.show()
         playButton.hide()
@@ -56,7 +60,8 @@ startButton.onMouseAction = startButton_onMouse
 
 def timer_onTimeout():
     showMessage('선물 배달 실패!')
-
+    
+    startButton.setImage('images/restart.png')
     startButton.show()
     endButton.show()
     playButton.hide()
